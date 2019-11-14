@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Form extends Component {
     state =
@@ -198,7 +199,7 @@ export default class Form extends Component {
                             </tbody>
                         </table>
                         </div>
-                    <button type="submit" className="btn btn-block btn-primary mt-3">add Student</button>
+                    <button component={Link} to="/FormList" type="submit" className="btn btn-block btn-primary mt-3">add Student</button>
                   
 
                 </form>

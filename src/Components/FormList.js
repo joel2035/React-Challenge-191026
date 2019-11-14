@@ -7,10 +7,10 @@ export default class FormList extends Component {
         return (
             <div>
                 <ul className="list-group my-5">
-                    <h3 className="text-capitalize text-center">Liste des etudiants</h3>
+                   
                     {
                         items.map(item=>{
-                           
+                            console.log();
                             
                             return(
                                 <FormItem key={item.id} data = {item.data }/>
@@ -20,7 +20,7 @@ export default class FormList extends Component {
                         })
                     }
                   
-                  <button type="button" className="btn btn-danger text-capitalize mt-5">Clear List</button>
+    
                 </ul>
             </div>
         )

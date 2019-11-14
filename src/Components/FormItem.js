@@ -4,7 +4,9 @@ export default class FormItem extends Component {
     render() {
         const {FirstName, Name}=this.props
         return (
+            
             <div>
+                 <h3 className="text-capitalize text-center">Liste des etudiants</h3>
                 <table className= "table table-striped table-hover">
                     <thead>
                         <tr>
