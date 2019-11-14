@@ -199,7 +199,10 @@ export default class Form extends Component {
                             </tbody>
                         </table>
                         </div>
-                    <button component={Link} to="/FormList" type="submit" className="btn btn-block btn-primary mt-3">add Student</button>
+                    
+                    <Link to='/list'>
+                        <button type="submit" className="btn btn-block btn-primary mt-3">add Student</button>
+                    </Link>
                   
 
                 </form>

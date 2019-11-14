@@ -52,9 +52,3 @@ export default class FormItem extends Component {
         )
     }
 }
-{/* <div className="todo-icon">
-                                <span className="mx-2 text-success"><i className="fas fa-pen"/></span>
-                                <span className="mx-2 text-danger"><i className="fas fa-trash"/></span>
-                             </div> */
-                            //  list-group-item text-capitalize -flex justify-content-between my-2
-                             }
