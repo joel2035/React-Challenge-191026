@@ -1,8 +1,9 @@
 ### Membres
-Joel Pokam
-Pierre-Alexis Krstic
+- Joel Pokam
+- Pierre-Alexis Krstic
 
 ### Technologies
-Front : **React**
-DB : **MongoDB**
-Style : **Bootstrap**
+- Front : **React**
+- Back : **React**
+- DB : **MongoDB**
+- Style : **Bootstrap**
