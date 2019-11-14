@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
 export default class Form extends Component {
     state =
     {
@@ -13,10 +12,8 @@ export default class Form extends Component {
         e.preventDefault();
         this.props.handleSubmit(this.state);
     }
-    
     render() {
-        
-        return (
+          return (
             <div className ="card card-body my-3">
                 <form onSubmit={ this.submit }>
                     <div className="input-group">
@@ -29,14 +26,13 @@ export default class Form extends Component {
                             this.state.firstname
                         }
                         name = "FirstName"
-                        onChange = { e => this.setState( { 
-                            firstname  : e.target.value } )}
-                            
-                            
+                        onChange = { e => this.setState({ 
+                            firstname  : e.target.value 
+                                } 
+                            )}  
                         type = "text"
                         placeholder = "FirstName"
                         className = "text-capitalaze form-control" />
-                        
                     </div>
                       <br/>
                     <div className="input-group">
@@ -45,7 +41,7 @@ export default class Form extends Component {
                         <i className="fa fa-book"/>
                         </div>
                         </div>
-                        <input type="text"  value={ this.state.name } 
+                        <input type="text"  value={this.state.name} 
                             onChange = {
                                 e => this.setState({
                                     name: e.target.value
@@ -201,7 +197,10 @@ export default class Form extends Component {
                         </div>
                     
                     
-                        <button type="submit" className="btn btn-block btn-primary mt-3">add Student</button>
+                      
+                            <button type="submit" className="btn btn-block btn-primary mt-3">add Student</button>
+                       
+                     
                    
                   
 
