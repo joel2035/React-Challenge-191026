@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 
 export default class FormItem extends Component {
     render() {
-        const {FirstName, Name}=this.props
         return (
             
             <div>
-                 <h3 className="text-capitalize text-center">Liste des etudiants</h3>
+                 
                 <table className= "table table-striped table-hover">
                     <thead>
                         <tr>
@@ -35,8 +34,8 @@ export default class FormItem extends Component {
                         <tr className="">
                       
                         
-                              <td>{FirstName}</td>
-                              <td>{Name}</td>
+                              <td>{this.props.data.firstname}</td>
+                              <td>{this.props.data.name}</td>
                               <td>antoine@yahoo.fr</td>
                               <td>WeB3</td>
                               <td>Front</td>

@@ -21,18 +21,14 @@ export class studentForm extends Component {
     }
 
     handleSubmit= data =>{
-
-
-      console.log(data);
       const newItem  = {
       id: this.state.id,
-      FirstName: this.state.FirstName
-
+      FirstName: this.state.FirstName,
+      
     }
-
-    const updatedItems= [...this.state.items, newItem] 
+    //const updatedItems= [...this.state.items, newItem] 
     this.setState({
-      items:updatedItems,
+      items:[...this.state.items, data],
       FirstName : "",
       id:uuid(),
       editItem:false
@@ -50,7 +46,7 @@ export class studentForm extends Component {
                    </div>
                    </div>
 
-                // </div>
+                </div>
             </div>
         )
     }

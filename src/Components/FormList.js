@@ -6,15 +6,15 @@ export default class FormList extends Component {
         const  {items} = this.props
         return (
             <div>
+                <h3 className="text-capitalize text-center">Liste des etudiants</h3>
                 <ul className="list-group my-5">
                    
                     {
                         items.map(item=>{
-                            console.log();
-                            
                             return(
-                                <FormItem key={item.id} data = {item.data }/>
-                                
+                                <div>
+                                    <FormItem key={item.id} data={item}/>
+                                </div>
                                 
                             )
                         })
