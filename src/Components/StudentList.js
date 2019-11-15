@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import FormItem from './FormItem';
-
-export default class FormList extends Component {
+import StudentListItem from './StudentListItems';
+export default class StudentList extends Component {
     render() {
         const { items } = this.props
         return (
             <div>
-                <h3 className="text-capitalize text-center">Liste des etudiants</h3>
                 <ul className="list-group my-5">
                     {
                         items.map(item => {
+                            console.log(item);
+                            
                             return (
                                 <div>
-                                    <FormItem data={item} />
+                                    <StudentListItem data={item} />
                                 </div>
                             )
                         })

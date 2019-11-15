@@ -1,18 +1,22 @@
 import React, {Component} from 'react';
-import FormItem from './FormItem';
-import studentForm from './studentForm'
+import StudentListItem from './StudentListItems';
+import StudentForm from './StudentForm'
+import Connexion from './Connexion';
 import './App.css';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 class App extends Component{
   
   render(){
     return(
+      
         <Router>
         <Switch>
-            <Route exact path ="/"component ={studentForm}/>
-            <Route path ="/list"component = {FormItem}/>
+            <Route exact path="/" component={Connexion} />
+            <Route exact path="/formulaire" component={StudentForm} />  
+            <Route path ="/list"component = {StudentListItem}/>
         </Switch>    
        </Router>
       )

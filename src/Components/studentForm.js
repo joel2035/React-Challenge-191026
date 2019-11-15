@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import Form from './Form';
-import FormList from './FormList';
-import uuid from 'uuid';
+import AddStudent from './AddStudent';
+import StudentList from './StudentList';
+// import uuid from 'uuid';
 
 export class studentForm extends Component {
     state ={
       items:[],
-      id:uuid(),
+    //   id:uuid(),
       FirstName:"",
       Name:"",
+      Email:"",
+      Promotion:"",
+      Note: "",
+
       // Name:"", 
       // email: "",
       editItem:false,
@@ -28,7 +32,7 @@ export class studentForm extends Component {
         this.setState({
         items:[...this.state.items, data],
         FirstName : "",
-        id:uuid(),
+        // id:uuid(),
         editItem:false
         })
     }
@@ -39,8 +43,8 @@ export class studentForm extends Component {
                    <div className="row">
                         <div className="col-10 mx-auto col-md-8 mt-4 ">
                             <h1 className="text-capitalize text-center">Ajouter un Étudiant</h1>
-                            <Form FirstName= {this.state.FirstName} handleChange = {this.handleChange} handleSubmit={this.handleSubmit}/>
-                            <FormList items={this.state.items}/>
+                            <AddStudent FirstName= {this.state.FirstName} handleChange = {this.handleChange} handleSubmit={this.handleSubmit}/>
+                            <StudentList items={this.state.items}/>
                         </div>
                    </div>
                 </div>
