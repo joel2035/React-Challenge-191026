@@ -8,7 +8,6 @@ export default class AddStudent extends Component {
             name: this.props.Name,
             email: this.props.Email,
             promotion: this.props.Promotion,
-
         }
 
     submit = e => {

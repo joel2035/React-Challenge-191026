@@ -29,19 +29,20 @@ export default class StudentListItem extends Component {
                             <th>
                                 <p>Promotion</p> 
                             </th>
-                           <th>
-                                <p>Competence</p> 
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="">
-                            <td></td>
-                            <td>jojo</td>
-                            <td>antoine@yahoo.fr</td>
-                            <td>WeB3</td>
-                            <td>Front</td>
-                        </tr>
+                      
+                            <tr>
+                                <td></td>
+                                <td>jojo</td>
+                                <td>antoine@yahoo.fr</td>
+                                <td>WeB3</td>
+                                <Link to="/info">
+                                    <button className="btn btn-info" id="btn" type="button">Info</button>
+                                </Link>   
+                            </tr>
+                     
                     </tbody>  
                 </table>
             </div>
