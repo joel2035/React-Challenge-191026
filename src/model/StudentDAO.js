@@ -6,25 +6,39 @@ const StudentDAO = ({StudentObj}) => {
     get = () => {
         if(StudentObj.id()) {
             //get StudentObj with id
-            return new Student(result.id, result.password)
+            if(error)  {
+                console.error("Erreur d'insertion de l'etudiant dans la base", StudentOb)
+            }
+            else{
+                return new Student(result.id, result.password)
+            }            
         }
     }
     
     save = () => {
         if(StudentObj.isValid()) {
             //insert mongo
+            if(error)  {
+                console.error("Erreur d'insertion de l'etudiant dans la base", StudentOb)
+            }
         }         
     }
 
     del = () => {
         if(StudentObj.isValidForUD()) {
             //delete mongo
+            if(error)  {
+                console.error("Erreur de suppression de l'etudiant la base", StudentObj)
+            }
         }
     }
 
     update = () => {
         if(StudentObj.isValidForUD()) {
-            //insert mongo
+            //update mongo
+            if(error)  {
+                console.error("Erreur d'ajout de l'etudiant dans la base", StudentObj)
+            }
         }         
     }
     
