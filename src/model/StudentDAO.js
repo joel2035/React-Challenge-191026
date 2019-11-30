@@ -1,9 +1,9 @@
 import Student from Student
 
-const StudentDAO = ({StudentObj}) => {
+const StudentDAO = () => {
     
     //StudentObj 
-    get = () => {
+    get = (StudentObj) => {
         if(StudentObj.id()) {
             //get StudentObj with id
             if(error)  {
@@ -15,7 +15,7 @@ const StudentDAO = ({StudentObj}) => {
         }
     }
     
-    save = () => {
+    save = (StudentObj) => {
         if(StudentObj.isValid()) {
             //insert mongo
             if(error)  {
@@ -24,7 +24,7 @@ const StudentDAO = ({StudentObj}) => {
         }         
     }
 
-    del = () => {
+    del = (StudentObj) => {
         if(StudentObj.isValidForUD()) {
             //delete mongo
             if(error)  {
@@ -33,7 +33,7 @@ const StudentDAO = ({StudentObj}) => {
         }
     }
 
-    update = () => {
+    update = (StudentObj) => {
         if(StudentObj.isValidForUD()) {
             //update mongo
             if(error)  {

@@ -1,18 +1,20 @@
-const AuthDAO = ({Auth}) => {
-    
+const AuthDAO = () => {
     
     //Student 
-    exist = () => {
+    exist = (AuthObj) => {
         //get auth avec couple email mdp
         if(result) {
-            return new Auth(result.id, result.password)
+            return AuthObj
         }
         return false
     }
     
-    save = () => {
-        if(Auth.isValid()) {
+    save = (AuthObj) => {
+        if(AuthObj.isValid()) {
             //insert mongo
+            if(error)  {
+                console.error("Erreur d'insertion de l'Auth dans la base", AuthObj)
+            }
         }         
     }
 }

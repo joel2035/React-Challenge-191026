@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import Model from 'StudentDAO';
 
 export class Student extends Component {
 
@@ -127,6 +128,23 @@ export class Student extends Component {
             this.errors.set(id, 'manquant')
         }
         return this.isValid()
+    }
+
+    //Model
+    get = () => {
+        Model.get(this)
+    }
+
+    save = () => {
+        Model.save(this)
+    }
+
+    delete = () => {
+        Model.del(this)
+    }
+
+    update = () => {
+        Model.update(this)
     }
 }
 
