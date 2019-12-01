@@ -18,7 +18,7 @@ export class Student extends Component {
         this.promos = promo
         this.descCusrus = descCusrus
         this.email = email
-        this.competenceNote = competenceNote
+        this.competenceNote = competenceNote //Tableau d'objets CompetenceNote
 
         this.errors = new Map()
     }
@@ -30,8 +30,8 @@ export class Student extends Component {
     errors = () => {
         for (var [cle, valeur] of this.errors.entries()) {
             switch(cle) {
-                case 'competence' :
-                    valeur.errors();
+                case 'competenceNote' :
+                    valeur.forEach( competenceNoteObj => competenceNoteObj.errors());
                     break;
                 default :
                     console.error(cle + " " + valeur);
@@ -107,9 +107,12 @@ export class Student extends Component {
         if(!this.email) {
             this.errors.set(email, 'invalide')
         }
-        if(!this.competence.isValid()) {
-            this.errors.set(competence, competence)
-        }
+        this.competenceNote.forEach((competenceNoteObj) => {
+            if(!competenceNoteObj.isValid()) {
+                this.errors.set(competenceNote, competenceNoteObj)
+            }
+        })
+      
 
         if(this.errors.size > 0) {
             this.errors();

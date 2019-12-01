@@ -5,10 +5,12 @@ export class Auth extends Component {
 
     constructor(
         id = null, 
-        password = null
+        password = null,
+        role = null
         ) {
-        this.id = id
-        this.password = password
+        Object.defineProperty(this, "id", {value: id, writable: false})
+        Object.defineProperty(this, "password", {value: password, writable: false})
+        Object.defineProperty(this, "role", {value: role, writable: false})
 
         this.errors = new Map()
     }
@@ -17,7 +19,21 @@ export class Auth extends Component {
      * Retourn l'email
      */
     Id = () => {
-        return this.id;
+        return this.id
+    }
+
+    /*
+     * Retourn le role
+     */
+    Role = () => {
+        return this.role
+    }
+
+    /*
+     * Retourn le role
+     */
+    hasRole = (roleName) => {
+        return this.role === roleName
     }
 
     /*
@@ -28,10 +44,10 @@ export class Auth extends Component {
         for (var [cle, valeur] of this.errors.entries()) {
             switch(cle) {
                 case 'password' :
-                    console.error(cle + " invalid");
+                    console.error(cle + " invalid")
                     break
                 default :
-                    console.error(cle + " " + valeur);
+                    console.error(cle + " " + valeur)
             }
           }
     }

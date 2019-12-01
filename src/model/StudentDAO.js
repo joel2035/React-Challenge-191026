@@ -27,9 +27,9 @@ const StudentDAO = () => {
     del = (StudentObj) => {
         if(StudentObj.isValidForUD()) {
             //delete mongo
-            if(error)  {
-                console.error("Erreur de suppression de l'etudiant la base", StudentObj)
-            }
+            
+            
+            
         }
     }
 
