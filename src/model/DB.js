@@ -1,12 +1,25 @@
 import { Component } from 'react';
 import Model from 'DBDAO';
+import Competence from 'CompetenceNote';
 
 export class DB extends Component {
 
     constructor(
         
         ) {
-        
+        //init part
+        this.baseAuths = [
+            new Auth(id = 'heticeric', pwd = 'heticeric', role = 'prof'),
+            new Auth(id = 'eleve', pwd = 'eleve', role = 'eleve')
+        ]
+        this.baseCompetences = [
+            new Competence(null, competenceName = 'Programmation coté client', null),
+            new Competence(null, competenceName = 'Programmation coté derveur', null),
+            new Competence(null, competenceName = 'Design UI', null),
+            new Competence(null, competenceName = 'UX', null),
+            new Competence(null, competenceName = 'Gestion de projet', null)
+        ]
+
         this.errors = new Map()
     }
 
@@ -26,18 +39,17 @@ export class DB extends Component {
           }
     }
 
-    static init = () => {
+    //Model
+    static insertBaseValues = () => {
         //insert base values
-        //compétences
         //comptes de base
+        this.baseAuths.forEach(authObj => authObj.save())
+        //compétences
+        this.baseCompetences.forEach(competenceObj => competenceObj.save())
     }
 
-    //Model
-    /*
-     * Racourcis ici, si l'Auth est correctement construit, on check l'existence pour 
-     * verifier la connection car le couple id, password de la classe est unique 
-     */ 
-    connect = () => {
+   static connect = () => {
+        DB.insertBaseValues();
         return Model.connect()
     }
 }

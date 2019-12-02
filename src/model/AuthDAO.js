@@ -10,7 +10,7 @@ const AuthDAO = () => {
     }
     
     save = (AuthObj) => {
-        if(AuthObj.isValid()) {
+        if(AuthObj.isValid() && !AuthObj.exist()) {
             //insert mongo
             if(error)  {
                 console.error("Erreur d'insertion de l'Auth dans la base", AuthObj)
