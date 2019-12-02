@@ -1,14 +1,11 @@
 import { Component } from 'react';
-import Model from 'StudentDAO';
 
 export class CompetenceNote extends Component {
 
     constructor(
-        id = null, 
         competenceName = null, 
         note = null, 
         ) {
-        this.id = id
         this.competenceName = competenceName
         this.note = note
 
@@ -67,21 +64,6 @@ export class CompetenceNote extends Component {
         else{
             return true;
         }
-    }
-
-    /*
-     * Valide la classe pour Read, Update ou Delete
-     */
-    isValidForUD = () => {
-        if(!this.id) {
-            this.errors.set(id, 'manquant')
-        }
-        return this.isValid()
-    }
-
-    //Model
-    save = () => {
-        Model.save(this)
     }
 }
 
