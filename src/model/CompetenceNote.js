@@ -69,6 +69,16 @@ export class CompetenceNote extends Component {
         }
     }
 
+    /*
+     * Valide la classe pour Read, Update ou Delete
+     */
+    isValidForUD = () => {
+        if(!this.id) {
+            this.errors.set(id, 'manquant')
+        }
+        return this.isValid()
+    }
+
     //Model
     save = () => {
         Model.save(this)

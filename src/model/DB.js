@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import Model from 'DBDAO';
-import Competence from 'CompetenceNote';
+import Competence from 'Competence';
 
 export class DB extends Component {
 
@@ -13,11 +13,11 @@ export class DB extends Component {
             new Auth(id = 'eleve', pwd = 'eleve', role = 'eleve')
         ]
         this.baseCompetences = [
-            new Competence(null, competenceName = 'Programmation coté client', null),
-            new Competence(null, competenceName = 'Programmation coté derveur', null),
-            new Competence(null, competenceName = 'Design UI', null),
-            new Competence(null, competenceName = 'UX', null),
-            new Competence(null, competenceName = 'Gestion de projet', null)
+            new Competence(null, competenceName = 'Programmation coté client'),
+            new Competence(null, competenceName = 'Programmation coté derveur'),
+            new Competence(null, competenceName = 'Design UI'),
+            new Competence(null, competenceName = 'UX'),
+            new Competence(null, competenceName = 'Gestion de projet')
         ]
 
         this.errors = new Map()
