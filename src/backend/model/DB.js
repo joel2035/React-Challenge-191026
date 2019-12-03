@@ -14,7 +14,7 @@ export class DB extends Component {
         ]
         this.baseCompetences = [
             new Competence(null, competenceName = 'Programmation coté client'),
-            new Competence(null, competenceName = 'Programmation coté derveur'),
+            new Competence(null, competenceName = 'Programmation coté serveur'),
             new Competence(null, competenceName = 'Design UI'),
             new Competence(null, competenceName = 'UX'),
             new Competence(null, competenceName = 'Gestion de projet')
@@ -40,6 +40,12 @@ export class DB extends Component {
     }
 
     //Model
+
+    /*
+     *  Insertion des entrée Auth pour le connection  (car pas de formulaire d'enregistrement)
+     *  Insertion des entrées statiques Compétences pour controle/asignation a un eleve
+     *  Insertion des étudiants via fichier avec couples "id,mdp"
+     */
     static insertBaseValues = () => {
         //insert base values
         //comptes de base
