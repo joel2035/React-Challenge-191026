@@ -21,6 +21,10 @@ mongoose.once('open', function() {
     console.log('MongoDB database connection established')
 })
 
+//Route to end points
+const studentRouter = requie('./routes/Student')
+app.use('/student', studentRouter)
+
 app.listen(PORT, function() {
     console.log("server runinf port: " + PORT)
 })
