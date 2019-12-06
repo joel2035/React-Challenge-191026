@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const authSchema = new Schema({
     nom: {
         type: String, 
+        unique: true,
         required: true,
         trim: true,
         minlength: 3

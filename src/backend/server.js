@@ -41,12 +41,6 @@ Comp.insertIfNotExist(CompUX, (err, comp) => {console.error(err)})
 Comp.insertIfNotExist(CompUI, (err, comp) => {console.error(err)})
 Comp.insertIfNotExist(CompGP, (err, comp) => {console.error(err)})
 
-
-//save
-newStudent.save()
-.then(() => res.json('Etudiant ajouté'))
-.catch(err => res.status(400).json('Erreurs: ' + err))
-
 //Route to end points
 const studentRouter = require('./routes/Student')
 app.use('/student', studentRouter)
