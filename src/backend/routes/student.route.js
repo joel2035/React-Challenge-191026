@@ -42,8 +42,8 @@ router.route('/student/add').get((req, res) => {
     
     //save
     newStudent.save()
-    .then(() => res.json('Etudiant ajouté'))
-    .catch(err => res.status(400).json('Erreurs: ' + err))
+        .then(() => res.json('Etudiant ajouté'))
+        .catch(err => res.status(400).json('Erreurs: ' + err))
 })
 
 //route Edit
