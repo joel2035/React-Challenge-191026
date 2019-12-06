@@ -7,6 +7,7 @@ export default class Student {
         this.id = id
         this.nom = nom
         this.password = password
+        this.role = role
         }
 
     nom = () => {
@@ -18,9 +19,12 @@ export default class Student {
    
     isConnected = () => {
         //get a '/auth/:nom'
-    }
+        //then : return this avec les valeurs de BD
+        //catch : console.error(JSON.parse(msg)}
 
     hasRole = (roleName) => {
         //get a '/student/:name/:id'
+        //then : return bool
+        //catch : console.error(JSON.parse(msg))
     }
 }
