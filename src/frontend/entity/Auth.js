@@ -1,11 +1,12 @@
 export default class Auth {
     constructor(
+        id = null,
         nom = null, 
         password = null, 
         role = null
         ) {
             Object.defineProperty(this, "id", {value: id, writable: false})
-            Object.defineProperty(this, "password", {value: nom, writable: false})
+            Object.defineProperty(this, "nom", {value: nom, writable: false})
             Object.defineProperty(this, "password", {value: password, writable: false})
             Object.defineProperty(this, "role", {value: role, writable: false})
         }
@@ -17,10 +18,14 @@ export default class Auth {
         return this.password
     }
    
+    connect = () => {
+        this.isConnected()
+    }
+
     isConnected = () => {
         //get a '/auth/:nom'
         //then : return this avec les valeurs de BD
-        return new Auth(nom = 'heticeric', password = 'heticeric', role= 'prof')
+        return new Auth('0552dfdggdg','heticeric', 'heticeric', 'prof')
         //catch : console.error(JSON.parse(msg)}
     }
 
