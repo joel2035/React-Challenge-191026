@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
 import Auth from '../entity/Auth';
+import AuthContext from '../contexts/AuthContext'
 
 export class Connexion extends Component {
 
@@ -19,7 +20,18 @@ export class Connexion extends Component {
     handleConnect = () => {
         const auth = new Auth(null, this.state.id, this.state.password, null)
         auth.connect()
-            .then(authJSON => {/* stocker l'objet en local storage*/})
+            .then(authJSON => {
+                /* stocker l'objet en local storage*/
+                let tmp = JSON.parse(authJSON)
+                const authContextValue = {
+                    auth: new Auth(tmp.id, tmp.nom, tmp.password, tmp.role)
+                }
+                return (
+                    <AuthContext.Provider value={authContextValue}>
+
+                    </AuthContext.Provider>
+                );
+            })
             .catch(error_message => this.setState({error: error_message}))
     }
 

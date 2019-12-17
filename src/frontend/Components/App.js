@@ -12,15 +12,13 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 class App extends Component{
   render(){
     return(
-      
         <Router>
-        <Switch>
-            <Route exact path="/" component={Connexion} />
-            <Route exact path="/formulaire" component={StudentForm} />  
-            <Route path ="/list" component = {StudentListItem}/>
-            <Route path ="/info" component = {StudentInfo}/>
-
-        </Switch>    
+          <Switch>
+              <Route exact path="/" component={Connexion} />
+              <Route exact path="/formulaire" component={StudentForm} />  
+              <Route path ="/list" component = {StudentListItem}/>
+              <Route path ="/info" component = {StudentInfo}/>
+          </Switch>    
        </Router>
       )
   }

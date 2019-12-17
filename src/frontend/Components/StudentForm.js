@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AddStudent from './AddStudent';
 import StudentList from './StudentList';
 // import uuid from 'uuid';
+import AuthContext from '../contexts/AuthContext'
 
 export class studentForm extends Component {
     state ={
@@ -38,17 +39,19 @@ export class studentForm extends Component {
     }
     render() {
         return (
-            <div>
-                <div className="container">
-                   <div className="row">
-                        <div className="col-10 mx-auto col-md-8 mt-4 ">
-                            <h1 className="text-capitalize text-center">Ajouter un Étudiant</h1>
-                            <AddStudent FirstName= {this.state.FirstName} handleChange = {this.handleChange} handleSubmit={this.handleSubmit}/>
-                            <StudentList items={this.state.items}/>
-                        </div>
-                   </div>
-                </div>
-            </div>
+           <AuthContext.Provider>
+              <div>
+                  <div className="container">
+                    <div className="row">
+                          <div className="col-10 mx-auto col-md-8 mt-4 ">
+                              <h1 className="text-capitalize text-center">Ajouter un Étudiant</h1>
+                              <AddStudent FirstName= {this.state.FirstName} handleChange = {this.handleChange} handleSubmit={this.handleSubmit}/>
+                              <StudentList items={this.state.items}/>
+                          </div>
+                    </div>
+                  </div>
+              </div>
+            </AuthContext.Provider>
         )
     }
 }
