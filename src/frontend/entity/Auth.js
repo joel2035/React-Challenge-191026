@@ -1,3 +1,7 @@
+import { useContext } from 'react';
+
+import AuthContext from '../contexts/AuthContext'
+
 export default class Auth {
     constructor(
         id = null,
@@ -23,6 +27,8 @@ export default class Auth {
     }
 
     isConnected = () => {
+        const { auth } = useContext(AuthContext)
+        return auth
         //get a '/auth/:nom'
         //then : return this avec les valeurs de BD
         return new Auth('0552dfdggdg','heticeric', 'heticeric', 'prof')

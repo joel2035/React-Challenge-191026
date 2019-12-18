@@ -11,6 +11,8 @@ export class Connexion extends Component {
         error: ''
     }
 
+    context = useContext(AuthContext)
+
     handleInputChange = (e) => {
         let stateObj = {}
         stateObj[e.target.value] = e.target.value
