@@ -11,7 +11,9 @@ export class Connexion extends Component {
         error: ''
     }
 
-    context = useContext(AuthContext)
+    constructor() {
+        Auth.isConnected() ? <Redirect to="/list"/> : null
+    }
 
     handleInputChange = (e) => {
         let stateObj = {}
@@ -30,7 +32,7 @@ export class Connexion extends Component {
                 }
                 return (
                     <AuthContext.Provider value={authContextValue}>
-
+                        <Redirect to="/list"/>
                     </AuthContext.Provider>
                 );
             })

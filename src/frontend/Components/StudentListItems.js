@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Auth from '../entity/Auth';
+
 export default class StudentListItem extends Component {
+
+    constructor() {
+        Auth.isConnected() ? null : <Redirect to="/"/>
+    }
+
     render() {
         console.log(this.props);
         

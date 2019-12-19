@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import Auth from '../entity/Auth';
 
 export class StudentInfo extends Component {
+    
+    constructor() {
+        Auth.isConnected() ? null : <Redirect to="/"/>
+    }
+
     render() {
         return (
             <div className="spacer">

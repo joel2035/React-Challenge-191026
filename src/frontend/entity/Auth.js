@@ -3,6 +3,9 @@ import { useContext } from 'react';
 import AuthContext from '../contexts/AuthContext'
 
 export default class Auth {
+
+    context = useContext(AuthContext)
+    
     constructor(
         id = null,
         nom = null, 
@@ -23,15 +26,20 @@ export default class Auth {
     }
    
     connect = () => {
-        this.isConnected()
+        //get a '/auth/:nom'
+        //then : return this avec les valeurs de BD
+
+        //ici faut new context, mtn a savoir si on l'export ds une classe a part ou si Auth gere tout, mais voir comment réaliser
+
+        return new Auth('0552dfdggdg','heticeric', 'heticeric', 'prof')
+        //catch : console.error(JSON.parse(msg)}
     }
 
     isConnected = () => {
-        const { auth } = useContext(AuthContext)
-        return auth
+        return context.auth
         //get a '/auth/:nom'
         //then : return this avec les valeurs de BD
-        return new Auth('0552dfdggdg','heticeric', 'heticeric', 'prof')
+        //return new Auth('0552dfdggdg','heticeric', 'heticeric', 'prof')
         //catch : console.error(JSON.parse(msg)}
     }
 

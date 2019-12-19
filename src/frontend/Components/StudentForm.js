@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AddStudent from './AddStudent';
 import StudentList from './StudentList';
 // import uuid from 'uuid';
-import AuthContext from '../contexts/AuthContext'
+import Auth from '../entity/Auth';
 
 export class studentForm extends Component {
     state ={
@@ -17,6 +17,12 @@ export class studentForm extends Component {
       // Name:"", 
       // email: "",
       editItem:false,
+    }
+
+    constructor() {
+      Auth.isConnected() ? null : <Redirect to="/"/>
+    }
+
     }
     handleChange =(e)=>{
       this.setState({
