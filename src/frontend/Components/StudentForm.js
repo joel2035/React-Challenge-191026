@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import AddStudent from './AddStudent';
 import StudentList from './StudentList';
 // import uuid from 'uuid';
 import Auth from '../entity/Auth';
 
 export class studentForm extends Component {
-    state ={
+    state = {
       items:[],
     //   id:uuid(),
       FirstName:"",
@@ -19,11 +20,6 @@ export class studentForm extends Component {
       editItem:false,
     }
 
-    constructor() {
-      Auth.isConnected() ? null : <Redirect to="/"/>
-    }
-
-    }
     handleChange =(e)=>{
       this.setState({
       FirstName: e.target.value
@@ -31,21 +27,22 @@ export class studentForm extends Component {
     }
 
     handleSubmit= data =>{
-      const newItem  = {
-      id: this.state.id,
-      FirstName: this.state.FirstName,
-       }
-    //const updatedItems= [...this.state.items, newItem] 
-        this.setState({
-        items:[...this.state.items, data],
-        FirstName : "",
-        // id:uuid(),
-        editItem:false
-        })
+      /*const newItem  = {
+        id: this.state.id,
+        FirstName: this.state.FirstName,
+      }*/
+      //const updatedItems= [...this.state.items, newItem] 
+      this.setState({
+      items:[...this.state.items, data],
+      FirstName : "",
+      // id:uuid(),
+      editItem:false
+      })
     }
+
     render() {
+      if(Auth.isConnected()){
         return (
-           <AuthContext.Provider>
               <div>
                   <div className="container">
                     <div className="row">
@@ -57,9 +54,11 @@ export class studentForm extends Component {
                     </div>
                   </div>
               </div>
-            </AuthContext.Provider>
         )
+    } else {
+        return <Redirect to="/"/>
     }
+  }
 }
 
 export default studentForm
