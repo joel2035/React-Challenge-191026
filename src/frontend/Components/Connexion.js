@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import Auth from '../entity/Auth';
-import AuthContext from '../contexts/AuthContext'
+import { AuthContext } from '../contexts/AuthContext'
 
 export class Connexion extends Component {
 
@@ -9,8 +8,9 @@ export class Connexion extends Component {
         id: null,
         password: null,
         error: '',
-        auth: new Auth()
     }
+
+    static contextType = AuthContext
 
     handleInputChange = (e) => {
         let stateObj = {}
@@ -19,30 +19,28 @@ export class Connexion extends Component {
     }
 
     handleConnect = () => {
-        const authFromDB = this.state.auth.connect(this.state.id, this.state.password)
-        this.setState({auth: authFromDB})
+
+        const authFromDB = this.context.auth.connect(this.state.id, this.state.password)
             
         //.then(AuthEntity => {
-                //Feed context avec Auth
-                const authContextValue = {
-                    auth: authFromDB
-                }
+            //Feed context avec Auth
+            this.context.register(authFromDB)
+            this.setState({
+                id: null,
+                password: null,
+                error: '',
+            })
 
-                //ca ne marche pas voir si on peux set le context avec
-                //cette methode ou s'il y en a une autre, ou s'il faut 
-                //tout changer pour englober tt les composants avec une putin de balise
-                return (
-                    <AuthContext.Provider value={authContextValue}>
-                        <Redirect to="/list"/>
-                    </AuthContext.Provider>
-                )
-            //})
-            //.catch(error_message => this.setState({error: error_message}))
+            //ca ne marche pas voir si on peux set le context avec
+            //cette methode ou s'il y en a une autre, ou s'il faut 
+            //tout changer pour englober tt les composants avec une putin de balise
+            
+        //})
+        //.catch(error_message => this.setState({error: error_message}))
     }
 
     render() {
-        console.log(this.state.auth.isConnected());
-        if(!this.state.auth.isConnected()) {
+        if(!this.context.auth.isConnected()) {
             return (
                 <div>
                     <div className = "overlay">
@@ -63,7 +61,7 @@ export class Connexion extends Component {
                                     <i className="fa fa-key"></i>
                                 </span>
                                 <input className="form-input" id="pwd" type="password" name ="password" required placeholder="password" onChange={this.handleInputChange}></input>
-                                <span className>
+                                <span className="input-item">
                                     <i className="fa fa-eye" aria-hidden="true" type="button" id="eye"></i>
                                 </span>
                                 <br/>
@@ -75,7 +73,6 @@ export class Connexion extends Component {
                 </div>
             )
         } else {
-            console.log('ok');
             return <Redirect to="/list"/>
         }
     }

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import AddStudent from './AddStudent';
 import StudentList from './StudentList';
+import { AuthContext } from '../contexts/AuthContext'
+
 // import uuid from 'uuid';
 import Auth from '../entity/Auth';
 
@@ -19,6 +21,8 @@ export class studentForm extends Component {
       // email: "",
       editItem:false,
     }
+
+    static contextType = AuthContext
 
     handleChange =(e)=>{
       this.setState({
@@ -41,7 +45,7 @@ export class studentForm extends Component {
     }
 
     render() {
-      if(Auth.isConnected()){
+      if(this.context.auth.isConnected()){
         return (
               <div>
                   <div className="container">

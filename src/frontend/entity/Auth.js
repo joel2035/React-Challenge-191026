@@ -53,8 +53,7 @@ export default class Auth {
     }
 
     isConnected = () => {
-        console.log(this.context);
-        return this.context ? this.context.auth : false
+        return true
         //get a '/auth/:nom'
         //then : return this avec les valeurs de BD
         //return new Auth('0552dfdggdg','heticeric', 'heticeric', 'prof')

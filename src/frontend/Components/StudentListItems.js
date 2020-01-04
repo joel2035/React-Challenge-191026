@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import Auth from '../entity/Auth';
+import { AuthContext } from '../contexts/AuthContext'
+
 
 export default class StudentListItem extends Component {
 
-    state = {
-        auth: new Auth()
-    }
+    static contextType = AuthContext
 
     render() {
-        if(this.state.auth.isConnected()) {
+        if(this.context.auth.isConnected()) {
             return (
                 <div>
                     <ul>

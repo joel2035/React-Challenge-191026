@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Auth from '../entity/Auth';
+import { AuthContext } from '../contexts/AuthContext'
+
 
 export class StudentInfo extends Component {
 
+    static contextType = AuthContext
+
     render() {
-        if(Auth.isConnected()) {
+        if(this.context.auth.isConnected()) {
             return (
                 <div className="spacer">
                     <Link to="/list">

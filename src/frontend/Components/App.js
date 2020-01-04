@@ -3,6 +3,7 @@ import StudentListItem from './StudentListItems';
 import StudentForm from './StudentForm'
 import StudentInfo from './StudentInfo'
 import Connexion from './Connexion';
+import AuthContextProvider from '../contexts/AuthContext';
 
 import './App.css';
 
@@ -17,6 +18,7 @@ class App extends Component{
 
   render(){
     return(
+      <AuthContextProvider>
         <Router>
           <Switch>
               <Route exact path="/" component={Connexion}/>
@@ -24,7 +26,8 @@ class App extends Component{
               <Route path ="/list" component = {StudentListItem}/>
               <Route path ="/info" component = {StudentInfo}/>
           </Switch>    
-       </Router>
+        </Router>
+      </AuthContextProvider>
       )
   }
 }
