@@ -4,9 +4,6 @@ import AddStudent from './AddStudent';
 import StudentList from './StudentList';
 import { AuthContext } from '../contexts/AuthContext'
 
-// import uuid from 'uuid';
-import Auth from '../entity/Auth';
-
 export class studentForm extends Component {
     state = {
       items:[],

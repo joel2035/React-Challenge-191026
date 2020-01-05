@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import Auth from '../entity/Auth';
 import { AuthContext } from '../contexts/AuthContext'
 
 

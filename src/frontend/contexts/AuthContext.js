@@ -13,6 +13,7 @@ export default class AuthContextProvider extends Component {
     }
 
     logout = () => {
+        console.log('ok')
         this.setState({auth: new Auth()})
     }
 

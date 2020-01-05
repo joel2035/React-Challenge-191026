@@ -9,6 +9,7 @@ export default class StudentListItem extends Component {
     static contextType = AuthContext
 
     render() {
+        const { logout } = this.context
         if(this.context.auth.isConnected()) {
             return (
                 <div>
@@ -18,6 +19,10 @@ export default class StudentListItem extends Component {
                         </li>
                         <li>
                             <Link to={"/list"}><button type="button" className="btn btn-primary">Liste des étudiants</button></Link>
+                        </li>
+
+                        <li>
+                        <Link to={"/"}><button type="button" className="btn btn-primary" onClick={logout}>Deconnecter</button></Link>
                         </li>
                     </ul>
                     <table className= "table table-striped table-hover">
