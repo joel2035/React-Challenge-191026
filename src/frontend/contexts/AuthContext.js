@@ -22,7 +22,8 @@ export default class AuthContextProvider extends Component {
             <AuthContext.Provider value={{
                 auth: this.state.auth, 
                 register: this.register,
-                logout: this.logout}}>
+                logout: this.logout}}
+                >
                 {this.props.children}
             </AuthContext.Provider>
         )
