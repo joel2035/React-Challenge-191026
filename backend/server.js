@@ -40,10 +40,10 @@ Comp.insertIfNotExist(CompUI, (err, comp) => {console.error(err)})
 Comp.insertIfNotExist(CompGP, (err, comp) => {console.error(err)})
 
 //Route to end points
-const studentRouter = require('./routes/student.routes.js')
+const studentRouter = require('./routes/student.routes.js.js')
 app.use('/student', studentRouter)
 
-const authRouter = require('./routes/auth.routes.js')
+const authRouter = require('./routes/auth.routes.js.js')
 app.use('/auth', authRouter)
 
 //lancer le serv
