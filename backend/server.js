@@ -11,7 +11,7 @@ app.use(express.json())
 
 //connection a la base mongo
 const uri = process.env.DB_URI
-mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true})
+mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
 //ouvrir & deleguer la gestion de la connection a nodemon
 mongoose.connection.once('open', () => {
     console.log('MongoDB database connection established')
@@ -39,13 +39,14 @@ Comp.insertIfNotExist(CompUI, (err, comp) => {console.error(err)})
 Comp.insertIfNotExist(CompGP, (err, comp) => {console.error(err)})
 
 //Route to end points
-const studentRouter = require('./routes/student.routes.js')
+const studentRouter = require('./routes/student.route.js')
 app.use('/student', studentRouter)
 
-const authRouter = require('./routes/auth.routes.js')
+const authRouter = require('./routes/auth.route.js')
 app.use('/auth', authRouter)
 
 //lancer le serv
-app.listen(DB_PORT, function() {
-    console.log("server runing PORT: " + DB_PORT)
+const db_port = process.env.DB_PORT
+app.listen(db_port, function() {
+    console.log("server runing PORT: " + db_port)
 })
