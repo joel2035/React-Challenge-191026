@@ -11,10 +11,8 @@ const competenceSchema = new Schema({
     }
 })
 
-const Competence = mongoose.model('Competence', competenceSchema)
-
 competenceSchema.statics.insertIfNotExist = function(comp, cb) {
-    Competence.find({name : comp.name}).exec(function(err, docs) {
+    this.find({name : comp.name}).exec(function(err, docs) {
         if (!docs.length){
             user.save(function(err) {
                 cb(err, auth)
@@ -25,5 +23,7 @@ competenceSchema.statics.insertIfNotExist = function(comp, cb) {
         }
     })
 }
+
+const Competence = mongoose.model('Competence', competenceSchema)
 
 module.exports = Competence
