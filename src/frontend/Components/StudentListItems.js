@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import StudentPromo from './StudentPromo';
+
 export default class StudentListItem extends Component {
+    
     render() {
         console.log(this.props);
-        
+        // recuperer l'etudoiant depuis les props et afficher 
         return (
             <div>
                 <ul>
@@ -12,6 +15,9 @@ export default class StudentListItem extends Component {
                     </li>
                     <li>
                         <Link to={"/list"}><button type="button" className="btn btn-primary">Liste des étudiants</button></Link>
+                    </li>
+                    <li>
+                        <StudentPromo/>
                     </li>
                 </ul>
                 <table className= "table table-striped table-hover">
@@ -32,13 +38,14 @@ export default class StudentListItem extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                      
+                     
                             <tr>
                                 <td></td>
                                 <td>jojo</td>
                                 <td>antoine@yahoo.fr</td>
                                 <td>WeB3</td>
                                 <Link to="/info">
+
                                     <button className="btn btn-info" id="btn" type="button">Info</button>
                                 </Link>   
                             </tr>

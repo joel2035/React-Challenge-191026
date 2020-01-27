@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 export default class AddStudent extends Component {
+    // recuperer la props student et set le state avec 
     state =
         {
             firstname: this.props.FirstName,
@@ -219,7 +220,7 @@ export default class AddStudent extends Component {
                                 </tbody>
                             </table>
                         </div>
-                        <Link to="/list"><button type="submit" className="btn btn-block btn-primary mt-3">add Student</button></Link>
+                        <Link to="/list"><button type="submit" className="btn btn-block btn-primary mt-3">Save</button></Link>
                     </form>
                 </div>
             </div>
