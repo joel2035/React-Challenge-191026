@@ -8,3 +8,5 @@ router.route('/auth/:name/:password').get((req, res) => {
         .then(auth => res.json(auth))
         .catch(err => res.status(400).json('Erreurs: ' + err))
 })
+
+module.exports = router;

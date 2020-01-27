@@ -51,12 +51,12 @@ router.route('/student/edit/:id').post((req, res) => {
     Student.findOneAndUpdate(
         { id: req.params.id }, 
         { $set: { 
-            nom = req.body.nom,
-            prenom = req.body.prenom,
-            promo = req.body.promo,
-            descCursus = req.body.descCursus,
-            email = req.body.email,
-            competenceNote = JSON.parse(req.body.competenceNote)
+            nom: req.body.nom,
+            prenom: req.body.prenom,
+            promo: req.body.promo,
+            descCursus: req.body.descCursus,
+            email: req.body.email,
+            competenceNote: JSON.parse(req.body.competenceNote)
         }}, 
         { new: true }
         )
@@ -64,3 +64,5 @@ router.route('/student/edit/:id').post((req, res) => {
         .catch(err => res.status(400).json('Erreurs: ' + err))
 
 })
+
+module.exports = router;

@@ -23,12 +23,9 @@ const authSchema = new Schema({
     }
 })
 
-const Auth = mongoose.model('Auth', authSchema)
-
-
 //definir la methode insertIfNotExist
 authSchema.statics.insertIfNotExist = function(auth, cb) {
-    Auth.find({name : auth.name}).exec(function(err, docs) {
+    this.find({name : auth.name}).exec(function(err, docs) {
         if (!docs.length){
             user.save(function(err) {
                 cb(err, auth)
@@ -39,5 +36,7 @@ authSchema.statics.insertIfNotExist = function(auth, cb) {
         }
     })
 }
+
+const Auth = mongoose.model('Auth', authSchema)
 
 module.exports = Auth
