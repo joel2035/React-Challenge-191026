@@ -4,6 +4,6 @@
 
 ### Technologies
 - Front : **React**
-- Back : **React**
+- Back : **Nodejs Express**
 - DB : **MongoDB**
 - Style : **Bootstrap**
