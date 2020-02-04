@@ -8,7 +8,7 @@ const authSchema = new Schema({
         unique: true,
         required: true,
         trim: true,
-        minlength: 3
+        minlength: 2
     },
     password: {
         type: String, 
@@ -27,12 +27,12 @@ const authSchema = new Schema({
 authSchema.statics.insertIfNotExist = function(auth, cb) {
     this.find({name : auth.name}).exec(function(err, docs) {
         if (!docs.length){
-            user.save(function(err) {
+            auth.save(function(err) {
                 cb(err, auth)
             })
         }
         else{
-            cb('Auth '+ auth.name +'existe deja', null);
+            cb('Auth <<'+ auth.nom +'>> existe deja', null);
         }
     })
 }

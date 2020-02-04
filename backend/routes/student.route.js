@@ -2,18 +2,18 @@ const router = require('express').Router();
 let Student = require('../model/student.model');
 
 //route Get specifiq
-router.route('/student/get/:id').get((req, res) => {
+router.route('/get/:id').get((req, res) => {
     Student.findById(req.params.id)
     .then(student => res.json(student))
     .catch(err => res.status(400).json('Erreurs: ' + err))
 })
 
 //route getAll
-router.route('/student/getAll/').post((req, res) => {
-    let mongoFilter = array()
+router.route('/all').post((req, res) => {
+    let mongoFilter = []
     let filterObj = {}
 
-    JSON.parse(res.body.filters).map(filter => {
+    JSON.parse(req.body.filters).map(filter => {
         //create filter from request
         filterObj[filter.field] = filter.value
 
@@ -29,7 +29,7 @@ router.route('/student/getAll/').post((req, res) => {
 })
 
 //route Add
-router.route('/student/add').get((req, res) => {
+router.route('/add').get((req, res) => {
     //creer model student
     const newStudent = new Student(
         nom = req.body.nom, 
@@ -47,7 +47,7 @@ router.route('/student/add').get((req, res) => {
 })
 
 //route Edit
-router.route('/student/edit/:id').post((req, res) => {
+router.route('/edit/:id').post((req, res) => {
     Student.findOneAndUpdate(
         { id: req.params.id }, 
         { $set: { 
@@ -58,7 +58,7 @@ router.route('/student/edit/:id').post((req, res) => {
             email: req.body.email,
             competenceNote: JSON.parse(req.body.competenceNote)
         }}, 
-        { new: true }
+        //{ new: true }
         )
         .then(() => { res.json('Etudiant édité')})
         .catch(err => res.status(400).json('Erreurs: ' + err))

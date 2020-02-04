@@ -46,7 +46,7 @@ const authRouter = require('./routes/auth.route.js')
 app.use('/auth', authRouter)
 
 //lancer le serv
-const db_port = process.env.DB_PORT
-app.listen(db_port, function() {
-    console.log("server runing PORT: " + db_port)
+const serv_port = process.env.SERV_PORT
+app.listen(serv_port, function() {
+    console.log("server runing PORT: " + serv_port)
 })

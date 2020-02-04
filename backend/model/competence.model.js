@@ -14,12 +14,12 @@ const competenceSchema = new Schema({
 competenceSchema.statics.insertIfNotExist = function(comp, cb) {
     this.find({name : comp.name}).exec(function(err, docs) {
         if (!docs.length){
-            user.save(function(err) {
-                cb(err, auth)
+            comp.save(function(err) {
+                cb(err, comp)
             })
         }
         else{
-           cb('Compentence '+ comp.name +'existe deja', null);
+           cb('Compentence <<'+ comp.nom +'>> existe deja', null);
         }
     })
 }
