@@ -10,10 +10,11 @@ router.route('/get/:id').get((req, res) => {
 
 //route getAll
 router.route('/all').post((req, res) => {
+    /*
     let mongoFilter = []
     let filterObj = {}
 
-    JSON.parse(req.body.filters).map(filter => {
+    req.body.filters.map(filter => {
         //create filter from request
         filterObj[filter.field] = filter.value
 
@@ -21,9 +22,9 @@ router.route('/all').post((req, res) => {
         mongoFilter.push(
             {filterObj}
         )
-    })
+    })*/
 
-    Student.find(mongoFilter)
+    Student.find(/*mongoFilter*/)
         .then(students => res.json(students))
         .catch(err => res.status(400).json('Erreurs: ' + err))
 })
