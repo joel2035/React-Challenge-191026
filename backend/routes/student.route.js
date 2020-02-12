@@ -4,8 +4,8 @@ let Student = require('../model/student.model');
 //route Get specifiq
 router.route('/get/:id').get((req, res) => {
     Student.findById(req.params.id)
-    .then(student => res.json(student))
-    .catch(err => res.status(400).json('Erreurs: ' + err))
+        .then(student => res.json(student))
+        .catch(err => res.status(400).json('Erreurs: ' + err))
 })
 
 //route getAll
@@ -24,8 +24,15 @@ router.route('/all').post((req, res) => {
         )
     })*/
 
-    Student.find(/*mongoFilter*/)
-        .then(students => res.json(students))
+    Student.find({})
+        .then(students => res.json(students)/*{
+            /*var studentsMap = {}
+            students.forEach(student => {
+                studentsMap[student._id] = student
+            })
+          
+            res.json(studentsMap)*/
+        )            
         .catch(err => res.status(400).json('Erreurs: ' + err))
 })
 

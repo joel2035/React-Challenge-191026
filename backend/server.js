@@ -25,6 +25,15 @@ const AuthEtudiant = new Auth({nom: "student", password: "student" , role: "etu"
 Auth.insertIfNotExist(AuthAdmin, (err, auth) => {console.error(err)})
 Auth.insertIfNotExist(AuthEtudiant, (err, auth) => {console.error(err)})
 
+//Eleves
+let Student = require('./model/student.model')
+const a = new Student({nom: "Quentin", prenom: "titi", promo: "P2020", role: "eleve", descCursus: "bla bla bla", email: "emailA@gmail.fr", competenceNote: { name: "UX", note:"A"}})
+const b = new Student({nom: "Clement", prenom: "toto", promo: "P2020", role: "eleve", descCursus: "bla bla bla", email: "emailB@gmail.fr", competenceNote: { name: "UI", note:"B"}})
+const c = new Student({nom: "Benoit", prenom: "tutu", promo: "P2021", role: "eleve", descCursus: "bla bla bla", email: "emailC@gmail.fr", competenceNote: { name: "Back", note:"C"}})
+Student.insertIfNotExist(a, (err, auth) => {console.error(err)})
+Student.insertIfNotExist(b, (err, auth) => {console.error(err)})
+Student.insertIfNotExist(c, (err, auth) => {console.error(err)})
+
 //Comp
 let Comp = require('./model/competence.model')
 const CompFront = new Comp({nom: "Front"})

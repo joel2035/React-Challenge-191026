@@ -47,6 +47,20 @@ const studentShema = new Schema({
     ]
 })
 
+//definir la methode insertIfNotExist
+studentShema.statics.insertIfNotExist = function(student, cb) {
+    this.find({nom : student.nom}).exec(function(err, docs) {
+        if (!docs.length){
+            student.save(function(err) {
+                cb(err, student)
+            })
+        }
+        else{
+            cb('Student <<'+ student.nom +'>> existe deja', null);
+        }
+    })
+}
+
 const Student = mongoose.model('Student', studentShema)
 
 module.exports = Student
