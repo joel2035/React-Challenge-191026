@@ -2,6 +2,17 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+const competenceNote = new Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    note:{
+        type: String,
+        required: true
+    }
+})
+
 const studentShema = new Schema({
     nom: {
         type: String,
@@ -33,23 +44,13 @@ const studentShema = new Schema({
         trim: true,
         minlength: 3
     },
-    competenceNote: [
-        {
-            name: {
-                type: String,
-                required: true,
-            },
-            note:{
-                type: String,
-                required: true
-            }
-        },
-    ]
+    competencesNotes: [competenceNote]
 })
+
 
 //definir la methode insertIfNotExist
 studentShema.statics.insertIfNotExist = function(student, cb) {
-    this.find({nom : student.nom}).exec(function(err, docs) {
+    this.find({nom: student.nom, prenom: student.prenom}).exec(function(err, docs) {
         if (!docs.length){
             student.save(function(err) {
                 cb(err, student)

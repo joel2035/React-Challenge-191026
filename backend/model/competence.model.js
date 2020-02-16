@@ -7,7 +7,7 @@ const competenceSchema = new Schema({
         type: String, 
         required: true,
         trim: true,
-        minlength: 3
+        minlength: 2
     }
 })
 

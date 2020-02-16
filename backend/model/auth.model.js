@@ -23,6 +23,9 @@ const authSchema = new Schema({
     }
 })
 
+/**
+ * Only used for inseting base Auth 
+ */
 //definir la methode insertIfNotExist
 authSchema.statics.insertIfNotExist = function(auth, cb) {
     this.find({name : auth.name}).exec(function(err, docs) {
@@ -36,6 +39,7 @@ authSchema.statics.insertIfNotExist = function(auth, cb) {
         }
     })
 }
+
 
 const Auth = mongoose.model('Auth', authSchema)
 

@@ -45,7 +45,7 @@ router.route('/add').get((req, res) => {
         promo = req.body.promo, 
         descCursus = req.body.descCursus, 
         email = req.body.email, 
-        competenceNote = JSON.parse(req.body.competenceNote)
+        competencesNotes = JSON.parse(req.body.competenceNote)
         )
     
     //save
@@ -55,7 +55,7 @@ router.route('/add').get((req, res) => {
 })
 
 //route Edit
-router.route('/edit/:id').post((req, res) => {
+router.route('/update/:id').post((req, res) => {
     Student.findOneAndUpdate(
         { id: req.params.id }, 
         { $set: { 
@@ -64,7 +64,7 @@ router.route('/edit/:id').post((req, res) => {
             promo: req.body.promo,
             descCursus: req.body.descCursus,
             email: req.body.email,
-            competenceNote: JSON.parse(req.body.competenceNote)
+            competencesNotes: JSON.parse(req.body.competenceNote)
         }}, 
         //{ new: true }
         )
