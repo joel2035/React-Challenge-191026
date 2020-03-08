@@ -1,19 +1,10 @@
 const mongoose = require('mongoose');
 
+const competenceNoteSchema = require('competenceNote.model');
+
 const Schema = mongoose.Schema;
 
-const competenceNote = new Schema({
-    name: {
-        type: String,
-        required: true,
-    },
-    note:{
-        type: String,
-        required: true
-    }
-})
-
-const studentShema = new Schema({
+const studentSchema = new Schema({
     nom: {
         type: String,
         required: true,
@@ -44,7 +35,7 @@ const studentShema = new Schema({
         trim: true,
         minlength: 3
     },
-    competencesNotes: [competenceNote]
+    competencesNotes: [competenceNoteSchema]
 })
 
 
@@ -62,6 +53,6 @@ studentShema.statics.insertIfNotExist = function(student, cb) {
     })
 }
 
-const Student = mongoose.model('Student', studentShema)
+const Student = mongoose.model('Student', studentSchema)
 
-module.exports = Student
+module.exports = Student;

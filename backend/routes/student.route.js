@@ -1,5 +1,5 @@
 const router = require('express').Router();
-let Student = require('../model/student.model');
+const { Student, CompetenceNote } = require('../model/student.model');
 
 //route Get specifiq
 router.route('/get/:id').get((req, res) => {
@@ -38,6 +38,14 @@ router.route('/all').post((req, res) => {
 
 //route Add
 router.route('/add').get((req, res) => {
+    //creer model COmpetenceNote
+    const competencesNotes = JSON.parse(req.body.competenceNote).map( competenceNote => {
+        new Competence(
+            name = competenceNote.name, 
+            note = competenceNote.note,
+        )
+    })
+
     //creer model student
     const newStudent = new Student(
         nom = req.body.nom, 
@@ -45,12 +53,12 @@ router.route('/add').get((req, res) => {
         promo = req.body.promo, 
         descCursus = req.body.descCursus, 
         email = req.body.email, 
-        competencesNotes = JSON.parse(req.body.competenceNote)
+        competencesNotes,
         )
     
     //save
     newStudent.save()
-        .then(() => res.json('Etudiant ajouté'))
+        .then(() => res.status(200).json('Etudiant ajouté'))
         .catch(err => res.status(400).json('Erreurs: ' + err))
 })
 
@@ -63,8 +71,7 @@ router.route('/update/:id').post((req, res) => {
             prenom: req.body.prenom,
             promo: req.body.promo,
             descCursus: req.body.descCursus,
-            email: req.body.email,
-            competencesNotes: JSON.parse(req.body.competenceNote)
+            email: req.body.email
         }}, 
         //{ new: true }
         )

@@ -2,16 +2,17 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const competenceSchema = new Schema({
-    nom: {
-        type: String, 
+const competenceNoteSchema = new Schema({
+    name: {
+        type: String,
         required: true,
-        trim: true,
-        minlength: 2
+    },
+    note:{
+        type: String,
+        required: true
     }
 })
-
-competenceSchema.statics.insertIfNotExist = function(comp, cb) {
+competenceNoteSchema.statics.insertIfNotExist = function(comp, cb) {
     this.find({name : comp.name}).exec(function(err, docs) {
         if (!docs.length){
             comp.save(function(err) {
@@ -24,6 +25,6 @@ competenceSchema.statics.insertIfNotExist = function(comp, cb) {
     })
 }
 
-const Competence = mongoose.model('Competence', competenceSchema)
+const CompetenceNote = mongoose.model('CompetenceNote', competenceNoteSchema)
 
-module.exports = Competence
+module.exports = CompetenceNote
