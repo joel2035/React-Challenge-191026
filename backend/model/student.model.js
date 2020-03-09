@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-const competenceNoteSchema = require('competenceNote.model');
-
 const Schema = mongoose.Schema;
 
 const studentSchema = new Schema({
@@ -34,8 +32,7 @@ const studentSchema = new Schema({
         required: true,
         trim: true,
         minlength: 3
-    },
-    competencesNotes: [competenceNoteSchema]
+    }
 })
 
 

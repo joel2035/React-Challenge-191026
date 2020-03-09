@@ -1,8 +1,15 @@
 const mongoose = require('mongoose');
 
+const Student = require('model/student.model');
+
 const Schema = mongoose.Schema;
 
 const competenceNoteSchema = new Schema({
+    student_id: {
+        type: Schema.Types.ObjectId, 
+        ref: 'Student', 
+        required: true,
+    },
     name: {
         type: String,
         required: true,

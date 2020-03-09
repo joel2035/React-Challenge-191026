@@ -10,20 +10,6 @@ router.route('/get/:id').get((req, res) => {
 
 //route getAll
 router.route('/all').post((req, res) => {
-    /*
-    let mongoFilter = []
-    let filterObj = {}
-
-    req.body.filters.map(filter => {
-        //create filter from request
-        filterObj[filter.field] = filter.value
-
-        //populate aray filters
-        mongoFilter.push(
-            {filterObj}
-        )
-    })*/
-
     Student.find({})
         .then(students => res.json(students)/*{
             /*var studentsMap = {}
