@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Student, CompetenceNote } = require('../model/student.model');
+const Student = require('../model/student.model');
 
 //route Get specifiq
 router.route('/get/:id').get((req, res) => {
@@ -11,7 +11,7 @@ router.route('/get/:id').get((req, res) => {
 //route getAll
 router.route('/all').post((req, res) => {
     Student.find({})
-        .then(students => res.json(students)/*{
+        .then(students => res.status(200).json(students)/*{
             /*var studentsMap = {}
             students.forEach(student => {
                 studentsMap[student._id] = student
@@ -24,14 +24,6 @@ router.route('/all').post((req, res) => {
 
 //route Add
 router.route('/add').get((req, res) => {
-    //creer model COmpetenceNote
-    const competencesNotes = JSON.parse(req.body.competenceNote).map( competenceNote => {
-        new Competence(
-            name = competenceNote.name, 
-            note = competenceNote.note,
-        )
-    })
-
     //creer model student
     const newStudent = new Student(
         nom = req.body.nom, 
@@ -39,7 +31,6 @@ router.route('/add').get((req, res) => {
         promo = req.body.promo, 
         descCursus = req.body.descCursus, 
         email = req.body.email, 
-        competencesNotes,
         )
     
     //save

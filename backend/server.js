@@ -18,51 +18,18 @@ mongoose.connection.once('open', () => {
 })
 
 //create base values to init DB if nescessary
-//Auth
-let Auth = require('./model/auth.model')
-const AuthAdmin = new Auth({nom: "heticeric", password: "heticeric" , role: "prof"})
-const AuthEtudiant = new Auth({nom: "student", password: "student" , role: "etu"})
-Auth.insertIfNotExist(AuthAdmin, (err, auth) => {console.error(err)})
-Auth.insertIfNotExist(AuthEtudiant, (err, auth) => {console.error(err)})
-
-//Eleves
-let Student = require('./model/student.model')
-let CompetenceNote = require("/model/competenceNote.model")
-const allowedComps = ["Front","Back","UI","UX","GP"]
-const allowedNotes = ["A", "B", "C","D","E","F"]
-
-const a = new Student({nom: "Quentin", prenom: "titi", promo: "P2020", role: "eleve", descCursus: "bla bla bla", email: "emailA@gmail.fr", })
-const b = new Student({nom: "Clement", prenom: "toto", promo: "P2020", role: "eleve", descCursus: "bla bla bla", email: "emailB@gmail.fr", })
-const c = new Student({nom: "Benoit", prenom: "tutu", promo: "P2021", role: "eleve", descCursus: "bla bla bla", email: "emailC@gmail.fr", })
-Student.insertIfNotExist(a, (err, student) => {
-    allowedComps.forEach(comp => {
-        //random note
-        const note = allowedNotes[Math.floor(Math.random() * allowedNotes.length)]
-        const student_id = student._id
-        //insert ompétences notes ici
-        const compNote = new competenceNote({student_id, name: comp, note})
-        CompetenceNote.insertIfNotExist(compNote) //#tester ca : nodemon server
-    })
-})
-//Comp
-let Comp = require('./model/competence.model')
-const CompFront = new Comp({nom: "Front"})
-const CompBack = new Comp({nom: "Back"})
-const CompUX = new Comp({nom: "UX"})
-const CompUI = new Comp({nom: "UI"})
-const CompGP= new Comp({nom: "Gestion de projet"})
-Comp.insertIfNotExist(CompFront, (err, comp) => {console.error(err)})
-Comp.insertIfNotExist(CompBack, (err, comp) => {console.error(err)})
-Comp.insertIfNotExist(CompUX, (err, comp) => {console.error(err)})
-Comp.insertIfNotExist(CompUI, (err, comp) => {console.error(err)})
-Comp.insertIfNotExist(CompGP, (err, comp) => {console.error(err)})
+const randomValuesInsertor = require('randomValusInsertor.js')
+randomValuesInsertor() //<-- check Terminal for errors
 
 //Route to end points
-const studentRouter = require('./routes/student.route.js')
+const studentRouter = require('./routes/student.routes.js')
 app.use('/student', studentRouter)
 
-const authRouter = require('./routes/auth.route.js')
+const authRouter = require('./routes/auth.routes.js')
 app.use('/auth', authRouter)
+
+const compNoteRouter = require('./routes/competence_note.routes.js')
+app.use('/auth', compNoteRouter)
 
 //lancer le serv
 const serv_port = process.env.SERV_PORT
