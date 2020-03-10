@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const Student = require('model/student.model');
-const Note = require('model/student.model');
-const Competence = require('model/student.model');
+const Student = require('./student.model');
+const Note = require('./student.model');
+const Competence = require('./student.model');
 
 const Schema = mongoose.Schema;
 
@@ -31,7 +31,7 @@ competenceNoteStudentSchema.statics.insertIfNotExist = function(comp, cb) {
             })
         }
         else{
-           cb('Association Competence/Note/Student <<'+ comp.nom +'>> existe deja', null);
+           cb('Association Competence/Note/Student <<'+ comp._id +'>> existe deja', null);
         }
     })
 }

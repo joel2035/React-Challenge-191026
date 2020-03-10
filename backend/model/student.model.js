@@ -37,7 +37,7 @@ const studentSchema = new Schema({
 
 
 //definir la methode insertIfNotExist
-studentShema.statics.insertIfNotExist = function(student, cb) {
+studentSchema.statics.insertIfNotExist = function(student, cb) {
     this.find({nom: student.nom, prenom: student.prenom}).exec(function(err, docs) {
         if (!docs.length){
             student.save(function(err) {

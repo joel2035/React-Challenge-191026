@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const noteSchema = new Schema({
-    name: {
+    nom: {
         type: String,
         required: true,
         enum: ["A", "B", "C","D","E","F"]
@@ -11,7 +11,7 @@ const noteSchema = new Schema({
 })
 
 noteSchema.statics.insertIfNotExist = function(comp, cb) {
-    this.find({name : comp.name}).exec(function(err, docs) {
+    this.find({nom : comp.nom}).exec(function(err, docs) {
         if (!docs.length){
             comp.save(function(err) {
                 cb(err, comp)

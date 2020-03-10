@@ -28,7 +28,7 @@ const authSchema = new Schema({
  */
 //definir la methode insertIfNotExist
 authSchema.statics.insertIfNotExist = function(auth, cb) {
-    this.find({name : auth.name}).exec(function(err, docs) {
+    this.find({nom : auth.nom}).exec(function(err, docs) {
         if (!docs.length){
             auth.save(function(err) {
                 cb(err, auth)
