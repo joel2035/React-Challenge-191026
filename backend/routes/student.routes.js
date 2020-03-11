@@ -10,8 +10,21 @@ router.route('/get/:id').get((req, res) => {
 
 //route getAll
 router.route('/all').post((req, res) => {
-    Student.find({})
-        .then(students => res.status(200).json(students))            
+    const filterObj = {}
+    //build filters
+    req.body.filters.each(filter => {
+        filterObj[filter.name] = filter.value
+    })
+    //request students
+    Student.find(filterObj)
+        .then(students => res.status(200).json(students)/*{
+            /*var studentsMap = {}
+            students.forEach(student => {
+                studentsMap[student._id] = student
+            })
+          
+            res.json(studentsMap)*/
+        )            
         .catch(err => res.status(400).json('Erreurs: ' + err))
 })
 

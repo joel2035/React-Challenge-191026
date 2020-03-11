@@ -1,0 +1,12 @@
+//--creer objet Niveau{eleve infos, competences ordonées par note decroissante}
+//--creer listNiveaux : [Niveau..]
+//--creer listGroupes : [Groupe..] ou Groupe :{num, list(Niveau)}
+//--parcours listNiveaux pour chaque Niveau
+    //--parcours listGroupes
+        cas1: des groupes sont vides
+        //-- Ajout de l'etudiant courant au groupe
+        //-- next listNiveaux
+        cas2: tout les groupes ont au moins une personne dedans
+        //--calcul variance / groupe avec le student ajouté -> listVarianceGroupe : [{variance, groupe num}]
+        //--trier listVarianceGroupe[] par ordre dé-croissant de variance -> listVarianceGroupe_Sorted[] 
+        //--ajouter l'etudiant au groupe
