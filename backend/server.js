@@ -22,7 +22,7 @@ mongoose.connect(
     .catch(msg => console.error("Erreur de connection à la BD"))
 //ouvrir & deleguer la gestion de la connection a nodemon
 mongoose.connection.once('open', () => {
-    console.log('MongoDB database connection established')
+    console.log('Connection à la base de données etablie')
 })
 
 //create base values to init DB if nescessary
