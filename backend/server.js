@@ -37,7 +37,13 @@ const authRouter = require('./routes/auth.routes.js')
 app.use('/auth', authRouter)
 
 const compNoteRouter = require('./routes/competenceNote.routes.js')
-app.use('/auth', compNoteRouter)
+app.use('/note_student', compNoteRouter)
+
+const competenceRouter = require('./routes/competence.routes.js')
+app.use('/competence', competenceRouter)
+
+const noteRouter = require('./routes/note.routes.js')
+app.use('/note', noteRouter)
 
 //lancer le serv
 const serv_port = "27017" //process.env.SERV_PORT

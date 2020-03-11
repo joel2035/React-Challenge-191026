@@ -11,14 +11,7 @@ router.route('/get/:id').get((req, res) => {
 //route getAll
 router.route('/all').post((req, res) => {
     Student.find({})
-        .then(students => res.status(200).json(students)/*{
-            /*var studentsMap = {}
-            students.forEach(student => {
-                studentsMap[student._id] = student
-            })
-          
-            res.json(studentsMap)*/
-        )            
+        .then(students => res.status(200).json(students))            
         .catch(err => res.status(400).json('Erreurs: ' + err))
 })
 
@@ -54,7 +47,28 @@ router.route('/update/:id').post((req, res) => {
         )
         .then(() => { res.json('Etudiant édité')})
         .catch(err => res.status(400).json('Erreurs: ' + err))
-
 })
+
+router.route('/note/student/:idstudent').post((req, res) => {
+    //get note object
+    //get comp object
+    //creer assoc
+
+    Student.findOneAndUpdate(
+        { id: req.params.id }, 
+        { $set: { 
+            nom: req.body.nom,
+            prenom: req.body.prenom,
+            promo: req.body.promo,
+            descCursus: req.body.descCursus,
+            email: req.body.email
+        }}, 
+        //{ new: true }
+        )
+        .then(() => { res.json('Etudiant édité')})
+        .catch(err => res.status(400).json('Erreurs: ' + err))
+})
+
+
 
 module.exports = router;

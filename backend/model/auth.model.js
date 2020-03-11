@@ -38,7 +38,6 @@ authSchema.statics.insertIfNotExist = async function(auth) {
     }
 }
 
-
 const Auth = mongoose.model('Auth', authSchema)
 
 module.exports = Auth

@@ -15,7 +15,6 @@ const competenceNoteStudentSchema = new Schema({
     note_id: {
         type: Schema.Types.ObjectId, 
         ref: 'Note', 
-        required: true,
     },
     comp_id: {
         type: Schema.Types.ObjectId, 
@@ -23,6 +22,7 @@ const competenceNoteStudentSchema = new Schema({
         required: true,
     },
 })
+
 competenceNoteStudentSchema.statics.insertIfNotExist = async function(assoc) {
     const docs = await this.find({student_id: assoc.student_id, note_id : assoc.note_id, comp_id : assoc.comp_id}).exec()
     if (!docs.length){
