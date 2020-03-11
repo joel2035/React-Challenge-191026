@@ -10,7 +10,7 @@ app.use(cors())
 app.use(express.json())
 
 //connection a la base mongo
-const uri = process.env.DB_URI
+const uri = "mongodb://localhost:27017/react-challenge-191026"//process.env.DB_URI
 mongoose.connect(
     uri, 
     {
@@ -40,7 +40,7 @@ const compNoteRouter = require('./routes/competenceNote.routes.js')
 app.use('/auth', compNoteRouter)
 
 //lancer le serv
-const serv_port = process.env.SERV_PORT
+const serv_port = "27017" //process.env.SERV_PORT
 app.listen(serv_port, function() {
     console.log("server runing PORT: " + serv_port)
 })

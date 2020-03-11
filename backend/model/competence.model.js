@@ -10,29 +10,27 @@ const competenceSchema = new Schema({
     }
 })
 
-competenceSchema.statics.insertIfNotExist = function(comp, cb) {
-    this.find({nom : comp.nom}).exec(function(err, docs) {
-        if (!docs.length){
-            comp.save(function(err) {
-                cb(err, comp)
-            })
-        }
-        else{
-           cb('Compentence <<'+ comp.nom +'>> existe deja', null);
-        }
-    })
+competenceSchema.statics.insertIfNotExist = async function(comp) {
+    const docs = await this.find({nom : comp.nom}).exec()
+    if (!docs.length){
+        const compDB = await comp.save()
+        return /*err,*/compDB
+    }
+    else{
+        console.log('Compentence <<'+ comp.nom +'>> existe deja')
+    }
 }
 
-competenceSchema.statics.getRandomEntry = function(cb) {
-    this.count().exec(function (err, count) {
-        // Get a random entry
-        var random = Math.floor(Math.random() * count)
-        // Again query all users but only fetch one offset by our random #
-        this.find().skip(random).exec(function (err, comp) {
-            // call back with result
-            cb(err, comp)
-          })
-      })
+competenceSchema.statics.getRandomEntry = async function() {
+    const values = ["Front","Back","UI","UX","Gestion de projet"]
+    const randomComp = values[Math.floor(Math.random() * values.length)]
+    const docs = await this.find({nom : randomComp}).exec()
+    if (!docs.length) {
+        return /*err,*/ docs[0]
+    }
+    else{
+        console.log('Compentence <<'+ randomComp +'>>  inexistante')
+    }
 }
 
 const Competence = mongoose.model('Competence', competenceSchema)

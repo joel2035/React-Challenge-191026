@@ -37,17 +37,15 @@ const studentSchema = new Schema({
 
 
 //definir la methode insertIfNotExist
-studentSchema.statics.insertIfNotExist = function(student, cb) {
-    this.find({nom: student.nom, prenom: student.prenom}).exec(function(err, docs) {
-        if (!docs.length){
-            student.save(function(err) {
-                cb(err, student)
-            })
-        }
-        else{
-            cb('Student <<'+ student.nom +'>> existe deja', null);
-        }
-    })
+studentSchema.statics.insertIfNotExist = async function(student) {
+    const docs = await this.find({nom: student.nom, prenom: student.prenom}).exec()
+    if (!docs.length){
+        const studentDB = await student.save()
+        return /*err, */studentDB
+    }
+    else{
+        console.log('Student <<'+ student.nom +'>> existe deja')
+    }
 }
 
 const Student = mongoose.model('Student', studentSchema)

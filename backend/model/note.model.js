@@ -10,29 +10,27 @@ const noteSchema = new Schema({
     }
 })
 
-noteSchema.statics.insertIfNotExist = function(comp, cb) {
-    this.find({nom : comp.nom}).exec(function(err, docs) {
-        if (!docs.length){
-            comp.save(function(err) {
-                cb(err, comp)
-            })
-        }
-        else{
-           cb('Note <<'+ comp.nom +'>> existe deja', null);
-        }
-    })
+noteSchema.statics.insertIfNotExist = async function(note) {
+    const docs = await this.find({nom : note.nom}).exec()
+    if (!docs.length){
+        const noteDB = note.save()
+        return /*err, */noteDB
+    }
+    else{
+        console.log('Note <<'+ note.nom +'>> existe deja')
+    }
 }
 
-noteSchema.statics.getRandomEntry = function(cb) {
-    this.count().exec(function (err, count) {
-        // Get a random entry
-        var random = Math.floor(Math.random() * count)
-        // Again query all users but only fetch one offset by our random #
-        this.findOne().skip(random).exec(function (err, note) {
-            // call back with result
-            cb(err, note)
-          })
-      })
+noteSchema.statics.getRandomEntry = async function() {
+    const values = ["A", "B", "C","D","E","F"]
+    const randomNote = values[Math.floor(Math.random() * values.length)]
+    const docs = await this.find({nom : randomNote}).exec()
+    if (!docs.length){
+        return /*err, */docs[0]
+    }
+    else{
+        console.log('Note <<'+ comp.nom +'>> existe deja')
+    }
 }
 
 const Competence = mongoose.model('Note', noteSchema)

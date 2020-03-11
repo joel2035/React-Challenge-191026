@@ -27,17 +27,15 @@ const authSchema = new Schema({
  * Only used for inseting base Auth 
  */
 //definir la methode insertIfNotExist
-authSchema.statics.insertIfNotExist = function(auth, cb) {
-    this.find({nom : auth.nom}).exec(function(err, docs) {
-        if (!docs.length){
-            auth.save(function(err) {
-                cb(err, auth)
-            })
-        }
-        else{
-            cb('Auth <<'+ auth.nom +'>> existe deja', null);
-        }
-    })
+authSchema.statics.insertIfNotExist = async function(auth) {
+    const docs = await this.find({nom : auth.nom}).exec()
+    if (!docs.length){
+        const authDB = await auth.save()
+        return /*err, */authDB
+    }
+    else{
+        console.log('Auth <<'+ auth.nom +'>> existe deja')
+    }
 }
 
 
